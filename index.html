@@ -7,16 +7,36 @@
         color: #4f8a;
         font-family: courier;
       }
+      #main{
+        text-align: center;
+      }
       #log{
         margin: 10px;
+      }
+      #tgtInput{
+        display: inline-block;
+        width: 600px;
+        background: #333;
+        color: #0f8;
+        font-family:courier;
+        border: none;
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <div id="log"></div>
+    <div class="main">
+      <div id="log"></div><br>
+      <input type="text" id="tgtInput" placeholder="enter tgt, e.g. ws://localhost:8080"><br>
+      <button onclick="connect()" id="connectButton">connect</button>
+    </div>    
     <script>
       log = document.querySelector('#log')
-      const ws = new WebSocket('ws://localhost:8080')
+      tgtInput = document.querySelector('#tgtInput')
+      connect = () => {
+        log.innerHTML += `attempting to connect to ${tgtInput.value} ... <br>`
+        const ws = new WebSocket(tgtInput.value)
+      }
       ws.onopen = () => {
         console.log('ws opened on browser')
         log.innerHTML += 'ws opened in browser<br>'
