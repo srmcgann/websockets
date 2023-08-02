@@ -36,15 +36,15 @@
       connect = () => {
         log.innerHTML += `attempting to connect to ${tgtInput.value} ... <br>`
         const ws = new WebSocket(tgtInput.value)
-      }
-      ws.onopen = () => {
-        console.log('ws opened on browser')
-        log.innerHTML += 'ws opened in browser<br>'
-        ws.send('hello world')
-      }
-      ws.onmessage = (message) => {
-        console.log(`message received`, message.data)
-        log.innerHTML += `message received: ${message.data}<br><br>`
+        ws.onopen = () => {
+          console.log('ws opened on browser')
+          log.innerHTML += 'ws opened in browser<br>'
+          ws.send('hello world')
+        }
+        ws.onmessage = (message) => {
+          console.log(`message received`, message.data)
+          log.innerHTML += `message received: ${message.data}<br><br>`
+        }
       }
     </script>
   </body>
